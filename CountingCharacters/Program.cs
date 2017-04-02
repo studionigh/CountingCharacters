@@ -1,15 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace CountingCharacters
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            StreamReader sr = new StreamReader("../../passageToIndia.txt");
+            string data = sr.ReadLine();
+            Dictionary<char, int> letters = new Dictionary<char, int>();
+
+            foreach (char a in data)
+            {
+                if (letters.ContainsKey(a))
+                {
+                    letters[a]++;
+                }
+                else
+                {
+                    letters.Add(a, 1);
+                }
+            }
+            foreach (KeyValuePair<char, int> letter in letters)
+            {
+                Console.WriteLine(letter.Key + " ; " + letter.Value);
+            }
+
+            Console.ReadLine();
         }
     }
 }
