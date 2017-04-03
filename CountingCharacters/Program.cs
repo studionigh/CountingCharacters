@@ -9,10 +9,10 @@ namespace CountingCharacters
         private static void Main(string[] args)
         {
             StreamReader sr = new StreamReader("../../passageToIndia.txt");
-            string data = sr.ReadLine();
+            string data = sr.ReadToEnd();
             Dictionary<char, int> letters = new Dictionary<char, int>();
 
-            foreach (char a in data)
+            foreach (char a in data) // Count the letters
             {
                 if (letters.ContainsKey(a))
                 {
@@ -23,7 +23,7 @@ namespace CountingCharacters
                     letters.Add(a, 1);
                 }
             }
-            foreach (KeyValuePair<char, int> letter in letters)
+            foreach (KeyValuePair<char, int> letter in letters)// print the letters to the console.
             {
                 Console.WriteLine(letter.Key + " ; " + letter.Value);
             }
